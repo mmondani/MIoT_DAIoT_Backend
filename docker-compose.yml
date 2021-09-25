@@ -47,8 +47,30 @@ services:
         working_dir:            /home/src
         command:                sh -c "npm install -g && 
                                         node index.js"
+        depends_on:
+            -                    db                                
         ports: 
             -                   3000:3000
+        networks:
+            -                   backend-network 
+
+    core:
+        image:                  node:14
+        hostname:               core
+        container_name:         core
+        volumes:
+            -                   ./core:/home/src
+        environment: 
+            NODE_PATH:          /home/node_modules
+        working_dir:            /home/src
+        command:                sh -c "npm install -g && 
+                                        node index.js"
+        depends_on:
+            -                    db
+            -                    api
+            -                    mosquitto                                
+        ports: 
+            -                   3001:3001
         networks:
             -                   backend-network 
 
