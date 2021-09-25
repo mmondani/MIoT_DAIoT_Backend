@@ -1,0 +1,6 @@
+[submodule "api"]
+	path = api
+	url = https://github.com/mmondani/daiot-api
+[submodule "core"]
+	path = core
+	url = https://github.com/mmondani/daiot-core
