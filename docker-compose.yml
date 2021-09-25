@@ -18,6 +18,24 @@ services:
         ports:
         -                     "8883:8883"
 
+    db:
+        image:                  mongo:latest
+        hostname:               mongodb
+        container_name:         mongodb
+        environment:
+            MONGO_INITDB_ROOT_USERNAME: admin
+            MONGO_INITDB_ROOT_PASSWORD: admin
+            MONGO_INITDB_DATABASE: iot
+        ports:
+            -                   "27017:27017"
+        expose:
+            -                   "27017"
+        volumes:
+            -                   ./db/dump/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+            -                   ./db/data:/data/db
+        networks:
+            -                     backend-network 
+
 networks:
     backend-network:
         driver:                 bridge
