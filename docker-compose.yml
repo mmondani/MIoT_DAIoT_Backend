@@ -36,6 +36,22 @@ services:
         networks:
             -                     backend-network 
 
+    api:
+        image:                  node:14
+        hostname:               api
+        container_name:         api
+        volumes:
+            -                   ./api:/home/src
+        environment: 
+            NODE_PATH:          /home/node_modules
+        working_dir:            /home/src
+        command:                sh -c "npm install -g && 
+                                        node index.js"
+        ports: 
+            -                   3000:3000
+        networks:
+            -                   backend-network 
+
 networks:
     backend-network:
         driver:                 bridge
