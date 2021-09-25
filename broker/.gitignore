@@ -1,0 +1,2 @@
+/mosquitto/certs/*.*
+!/mosquitto/certs/.keep
