@@ -37,16 +37,10 @@ services:
             -                     backend-network 
 
     api:
-        image:                  node:14
-        hostname:               api
-        container_name:         api
-        volumes:
-            -                   ./api:/home/src
-        environment: 
-            NODE_PATH:          /home/node_modules
-        working_dir:            /home/src
+        i192.168.1.101
         command:                sh -c "npm install -g && 
-                                        node index.js"
+                                        npm install -g nodemon && 
+                                        nodemon --inspect=0.0.0.0:9229 --watch /home/src/"
         depends_on:
             -                    db                                
         ports: 
@@ -64,7 +58,8 @@ services:
             NODE_PATH:          /home/node_modules
         working_dir:            /home/src
         command:                sh -c "npm install -g && 
-                                        node index.js"
+                                        npm install -g nodemon && 
+                                        nodemon --inspect=0.0.0.0:9230 --watch /home/src/"
         depends_on:
             -                    db
             -                    api
