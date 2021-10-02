@@ -75,6 +75,15 @@ La API es un fork del siguiente repositorio:
 https://github.com/mcastellogh/daiot-api
 ```
 
+A partir de ese repositorio, se agregaron algunos endpoints que son usados tanto por el frontend como por el módulo Core.
+
+Los endpoints agregados son:
+
+- GET `/dispo`: permite obtener toda la lista de dispositivos que están dados de alta.
+- GET `/dispo/:nombre`: permite obtener la información del dispositivo `nombre`.
+- PUT `/dispo/canal`: es un endpoint usado por el módulo Core con el que le indica a la API que debe actualizar el estado de un canal de un dispositivo.
+- PUT `/dispo/status`: es un endpoint usado por el módulo Core con el que le indica si un dispositivo está online u offline.
+
 ### Core
 
 El servicio core es un fork del siguiente repositorio:
@@ -84,3 +93,5 @@ https://github.com/mcastellogh/daiot-core
 ```
 
 Como este servicio se conecta al broker MQTT, se deben cargar los certificados que va a usar para autenticarse. Los mismos se deben poner en la carpeta `core/certs`.
+
+Al respositorio mencionado, se le agregó la suscripción a los topics `device/status` y `device/action`. De esta forma puede informarle a la API cuando un dispositivo se conecta o desconecta y cuando un dispositivo responde a un comando para encender o apagar un canal.
