@@ -14,8 +14,10 @@ services:
         networks:
         -                     backend-network 
         expose:
+        -                     "1883"
         -                     "8883"
         ports:
+        -                     "1883:1883"
         -                     "8883:8883"
 
     db:

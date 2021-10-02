@@ -26,12 +26,15 @@ Para ejecutar el backend se debe correr el comando `docker-compose up` desde la 
 
 ## Detalles de implementación
 
-El backend se compone de 34 contenedores:
+El backend se compone de 4 contenedores:
 
 - Base de datos MongoDB
 - Broker MQTT Mosquitto
 - API REST
 - Servicio Core
+
+![diagrama_docker](doc/diagrama_docker.png)
+
 
 ### Base de datos
 
