@@ -16,9 +16,11 @@ services:
         expose:
         -                     "1883"
         -                     "8883"
+        -                     "9001"
         ports:
         -                     "1883:1883"
         -                     "8883:8883"
+        -                     "9001:9001"
 
     db:
         image:                  mongo:latest
