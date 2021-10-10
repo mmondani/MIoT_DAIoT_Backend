@@ -60,7 +60,7 @@ La comunicación con los dispositivos se va a hacer a través de MQTT. Para esto
 
 Cuando inicia, va a tomar la configuración del archivo `mosquitto.conf` que se encuentra en la carpeta `broker/mosquitto/config`.
 
-El broker va a estar escuchando en los puertos `1883` y `8883`. En el caso de este último, la comunicación va a usar TLS.
+El broker va a estar escuchando en los puertos `9001` (mediante web sockets) y `8883` (mediante MQTT). En el caso de este último, la comunicación va a usar TLS.
 
 Por lo tanto, es necesario cargar los certificados del broker. Estos certificados se ponen en la carpeta `broker/mosquitto/certs`.
 
