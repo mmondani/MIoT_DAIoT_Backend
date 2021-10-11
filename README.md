@@ -114,3 +114,9 @@ https://github.com/mcastellogh/daiot-core
 Como este servicio se conecta al broker MQTT, se deben cargar los certificados que va a usar para autenticarse. Los mismos se deben poner en la carpeta `core/certs`.
 
 Al respositorio mencionado, se le agregó la suscripción a los topics `device/status` y `device/action`. De esta forma puede informarle a la API cuando un dispositivo se conecta o desconecta y cuando un dispositivo responde a un comando para encender o apagar un canal.
+
+### Grupo de trabajo
+
+Mariano Mondani
+Santiago Salamandri
+Agustín Rey
