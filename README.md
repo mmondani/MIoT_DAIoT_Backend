@@ -22,7 +22,25 @@ git submodule update --init --recursive --remote
 
 ### Ejecutar el código
 
-Para ejecutar el backend se debe correr el comando `docker-compose up` desde la raiz del proyecto. 
+Para que todos los servicios del backend funcionen, en primer lugar es necesario crear los certificados TLS. Estos van a ser usados:
+
+- Por el sensor al conectarse al broker MQTT
+- Por el módulo CORE para conectarse al broker MQTT
+
+Para esto, es necesario ejecutar el script `broker/scripts/crea_certs.sh`. En este script se debe configurar la variable `IP` con la IP o URL donde van a estar corriendo los contenedores de docker.
+
+El resultado de este script van a ser: 
+
+- Certificado y llave privada del CA. El certificado debe ser copiado a:
+    - El archivo `mqtt.c` del sensor.
+    - La carpeta `broker/mosquitto/certs`
+    - La carpeta `core/certs`
+- Certificado y llave privada del servidor. Ambos archivos deben ser copiados a la carpeta `broker/mosquitto/certs`
+- Certificado y llave privada del cliente. Ambos archivos deben ser copiados a:
+    - El archivo `mqtt.c` del sensor.
+    - La carpeta `core/certs`
+
+Finalmente, para ejecutar el backend se debe correr el comando `docker-compose up` desde la raiz del proyecto. 
 
 ## Detalles de implementación
 
@@ -82,7 +100,8 @@ Los endpoints agregados son:
 - GET `/dispo`: permite obtener toda la lista de dispositivos que están dados de alta.
 - GET `/dispo/:nombre`: permite obtener la información del dispositivo `nombre`.
 - PUT `/dispo/canal`: es un endpoint usado por el módulo Core con el que le indica a la API que debe actualizar el estado de un canal de un dispositivo.
-- PUT `/dispo/status`: es un endpoint usado por el módulo Core con el que le indica si un dispositivo está online u offline.
+- PUT `/dispo/status`: es un endpoint usado por el módulo Core con el que le indica a la API si un dispositivo está online u offline.
+- PUT `/dispo/ultima-tele`: es un endpoint usado por el módulo Core con el que le indica a la API las últimas mediciones informadas por el sensor.
 
 ### Core
 
